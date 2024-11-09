@@ -10,7 +10,7 @@ import (
 	"google.golang.org/api/option"
 )
 
-func printResponse(resp *genai.GenerateContentResponse) genai.Text {
+func ResponseToText(resp *genai.GenerateContentResponse) genai.Text {
 	var content genai.Text
 
 	for _, cand := range resp.Candidates {
@@ -43,7 +43,7 @@ Mini-goals: mini-goal`, userInput)
 		log.Fatal(err)
 	}
 
-	content := printResponse(resp)
+	content := ResponseToText(resp)
 	var text string = string(content)
 	return text
 }
