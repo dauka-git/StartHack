@@ -82,45 +82,9 @@ func storeInDatabase(userId int, roadmapId int, goals string, deadlines string, 
 }
 
 func main() {
-	response := `## Roadmap name: Physics Odyssey
-
-**Goal #1: Foundational Physics**
-
-**Deadline:** 01.12 - 31.01
-
-**Mini-goals:**
-
-* **Master algebra and trigonometry:** Solid understanding of equations, manipulating expressions, and solving for unknowns. (01.12)
-* **Mechanics 101:** Explore concepts of motion, forces, energy, and momentum. (15.12)
-* **Electricity & Magnetism Basics:** Understand electric charge, current, fields, and basic magnetic interactions. (31.12)
-* **Waves & Optics:** Learn about wave behavior, light, and simple optical phenomena. (15.01)
-* **Thermodynamics & Heat:** Grasp the concepts of temperature, heat transfer, and the laws of thermodynamics. (31.01)
-
-**Goal #2: Deep Dive into Core Physics**
-
-**Deadline:** 01.02 - 31.03
-
-**Mini-goals:**
-
-* **Classical Mechanics:** Delve deeper into mechanics with advanced topics like Lagrangian and Hamiltonian mechanics. (15.02)
-* **Electrodynamics:**  Uncover the secrets of electric and magnetic fields, including Maxwell's equations. (28.02)
-* **Quantum Mechanics:**  Explore the strange world of the very small, with wave-particle duality, superposition, and uncertainty. (15.03)
-* **Statistical Mechanics:**  Bridge the gap between microscopic and macroscopic systems with probability and statistics. (31.03)
-
-**Goal #3:  Expanding your Horizons**
-
-**Deadline:** 01.04 - Ongoing
-
-**Mini-goals:**
-
-* **Choose your focus:**  Pick a subfield of physics that excites you (e.g., astrophysics, particle physics, condensed matter physics). (15.04)
-* **Advanced coursework/independent study:**  Dive deeper into your chosen field through specialized courses, online resources, or self-study. (Ongoing)
-* **Explore the history of physics:**  Learn about the fascinating journey of physics from early discoveries to modern theories. (Ongoing)
-* **Connect with the physics community:**  Engage with online forums, attend physics lectures, or join physics clubs to learn from others. (Ongoing)
-
-**Note:** This roadmap is a suggestion, adjust the pace and complexity of the mini-goals to suit your learning style and goals.
-`
-
+	var userInput string
+	fmt.Scanln(&userInput)
+	response := GetGeminiResponse(userInput)
 	cleanText := strings.ReplaceAll(response, "*", "")
 	cleanText = strings.ReplaceAll(cleanText, "#", "")
 	goals, deadlines, descriptions := parseResponse(cleanText)
