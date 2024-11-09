@@ -83,9 +83,8 @@ func storeInDatabase(userId int, roadmapId int, goals string, deadlines string, 
 
 func main() {
 	var userInput string
-	fmt.Println("Enter your input: ")
+	fmt.Print("Enter your input: ")
 	fmt.Scanln(&userInput)
-	fmt.Println(userInput)
 	response := GetGeminiResponse(userInput)
 	cleanText := strings.ReplaceAll(response, "*", "")
 	cleanText = strings.ReplaceAll(cleanText, "#", "")
